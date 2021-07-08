@@ -9,6 +9,10 @@ export class BaseCache<T, K> {
     this.cache.set(key, value);
   }
 
+  get(key: T) {
+    return this.cache.get(key);
+  }
+
   hit(key: T) {
     if (this.cache.has(key)) {
       return true;
