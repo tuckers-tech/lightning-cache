@@ -1,14 +1,13 @@
-import { InMemoryStorage } from '../Storage/InMemory.storage';
-import { LocalStorage } from '../Storage/Local.storage';
+import { InMemoryStorage } from '../StorageEngines/InMemory.storage';
+import { LocalStorage } from '../StorageEngines/Local.storage';
+import { Cacheable } from '../core/Cacheable';
 
-export interface CacheConstructorOptions {
-  tokens: {
-    token: string;
-    cacheType: 'in-memory' | 'local';
-  }[];
+export interface CacheToken {
+  type: string;
+  storageEngine: InMemoryStorage<Cacheable> | LocalStorage<Cacheable>;
+  id: string;
 }
 
-export interface CacheArrayElement {
-  token: string;
-  cache: InMemoryStorage | LocalStorage;
+export interface CacheConstructorOptions {
+  tokens: CacheToken[];
 }
