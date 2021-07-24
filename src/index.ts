@@ -1,5 +1,4 @@
-const cache = require('./cache');
+import { LightningCache } from './core/LightningCache';
+import { InMemoryStorage } from './StorageEngines/InMemory.storage';
 
-module.exports = {
-  cache,
-};
+export { LightningCache, InMemoryStorage };

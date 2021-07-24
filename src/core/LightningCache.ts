@@ -4,7 +4,7 @@ import { CacheConstructorOptions } from '../interfaces/Cache.interface';
 import { InMemoryStorage } from '../StorageEngines/InMemory.storage';
 import { LocalStorage } from '../StorageEngines/Local.storage';
 
-export class Cache {
+export class LightningCache {
   private engine: CacheEngine;
 
   constructor(constructorOptions: CacheConstructorOptions) {

@@ -66,6 +66,26 @@ describe('setValue()', () => {
   });
 });
 
+describe('getValue()', () => {
+  test('Throws StorageEngineNotFoundError if storage Engine is not found', () => {
+    expect(() => {
+      cacheEngineNone.getValue('users', 'id1');
+    }).toThrow(
+      new StorageEngineNotFoundError(
+        'Unable To Find Storage Engine with type users.  Was it initialized?'
+      )
+    );
+  });
+
+  test('Gets Values', () => {
+    cacheEngineSingle.setValue('users', user1);
+    cacheEngineSingle.setValue('users', user2);
+
+    expect(cacheEngineSingle.getValue('users', 'id1')).toEqual(user1);
+    expect(cacheEngineSingle.getValue('users', 'id2')).toEqual(user2);
+  });
+});
+
 describe('getCacheKey()', () => {
   test('Formats Cache Key Correctly', () => {
     expect(cacheEngineNone.getCacheKey('users', 'example')).toEqual(

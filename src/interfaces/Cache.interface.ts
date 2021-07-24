@@ -1,10 +1,10 @@
 import { InMemoryStorage } from '../StorageEngines/InMemory.storage';
 import { LocalStorage } from '../StorageEngines/Local.storage';
-import { Cacheable } from '../core/Cacheable';
 
 export interface CacheToken {
   type: string;
-  storageEngine: InMemoryStorage<Cacheable> | LocalStorage<Cacheable>;
+  // TODO (TUCKER) - This shouldn't export any, need to figure out how to get it to reference any value that implements `Cacheable`
+  storageEngine: InMemoryStorage<any> | LocalStorage<any>;
   id: string;
 }
 

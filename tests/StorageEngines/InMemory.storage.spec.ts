@@ -25,6 +25,10 @@ describe('Creates Cache', () => {
 });
 
 describe('Get/Set', () => {
+  test('Get Value gets undefined value if does not exist', () => {
+    expect(baseCache.get('foo')).toBeUndefined();
+  });
+
   test('Set Value Sets Values within cache', () => {
     baseCache.set('foo', user1);
 
@@ -43,5 +47,45 @@ describe('Get/Set', () => {
     baseCache.set('foo', user1);
 
     expect(baseCache.get('foo')).toEqual(user1);
+  });
+});
+
+describe('has', () => {
+  test('Has Returns False if no value', () => {
+    expect(baseCache.has('foo')).toBe(false);
+  });
+
+  test('Has Returns true if value exists', () => {
+    baseCache.set('foo', user1);
+
+    expect(baseCache.has('foo')).toBe(true);
+  });
+});
+
+describe('remove', () => {
+  test('remove Returns False if no value', () => {
+    expect(baseCache.remove('foo')).toEqual(false);
+  });
+
+  test('remove Returns true if value is removed', () => {
+    baseCache.set('foo', user1);
+
+    const result = baseCache.remove('foo');
+
+    expect(result).toBe(true);
+    expect(baseCache.get('foo')).toBeUndefined();
+  });
+});
+
+describe('getAll', () => {
+  test('remove Returns False if no value', () => {
+    expect(baseCache.getAll()).toEqual([]);
+  });
+
+  test('remove Returns true if value is removed', () => {
+    baseCache.set('foo', user1);
+    baseCache.set('bar', user2);
+
+    expect(baseCache.getAll()).toEqual([user1, user2]);
   });
 });
