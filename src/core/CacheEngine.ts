@@ -26,7 +26,7 @@ export class CacheEngine {
     token.storageEngine.set(this.getCacheKey(type, value.getID()), value);
   }
 
-  public getCacheKey(type: string, id: string) {
+  public getCacheKey(type: string, id: string): string {
     return `${type}:${id}`;
   }
 

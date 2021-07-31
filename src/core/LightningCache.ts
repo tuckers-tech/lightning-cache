@@ -13,7 +13,7 @@ export class LightningCache {
     LightningCache.CACHE_OPTIONS = null;
   }
 
-  public static init(constructorOptions: CacheConstructorOptions) {
+  public static init(constructorOptions: CacheConstructorOptions): void {
     LightningCache.CACHE_OPTIONS = constructorOptions;
     LightningCache.instance = new CacheEngine(LightningCache.CACHE_OPTIONS);
   }
